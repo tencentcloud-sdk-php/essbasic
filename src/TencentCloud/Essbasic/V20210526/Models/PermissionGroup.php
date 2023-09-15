@@ -18,59 +18,59 @@ namespace TencentCloud\Essbasic\V20210526\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * 渠道角色信息
+ * 权限树中的权限组
  *
- * @method string getRoleId() 获取角色id
+ * @method string getGroupName() 获取权限组名称
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setRoleId(string $RoleId) 设置角色id
+ * @method void setGroupName(string $GroupName) 设置权限组名称
 注意：此字段可能返回 null，表示取不到有效值。
- * @method string getRoleName() 获取角色名
+ * @method string getGroupKey() 获取权限组key
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setRoleName(string $RoleName) 设置角色名
+ * @method void setGroupKey(string $GroupKey) 设置权限组key
 注意：此字段可能返回 null，表示取不到有效值。
- * @method integer getRoleStatus() 获取角色状态：1-启用；2-禁用
+ * @method integer getHide() 获取是否隐藏分组，0否1是
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setRoleStatus(integer $RoleStatus) 设置角色状态：1-启用；2-禁用
+ * @method void setHide(integer $Hide) 设置是否隐藏分组，0否1是
 注意：此字段可能返回 null，表示取不到有效值。
- * @method array getPermissionGroups() 获取权限树
+ * @method array getPermissions() 获取权限集合
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setPermissionGroups(array $PermissionGroups) 设置权限树
+ * @method void setPermissions(array $Permissions) 设置权限集合
 注意：此字段可能返回 null，表示取不到有效值。
  */
-class ChannelRole extends AbstractModel
+class PermissionGroup extends AbstractModel
 {
     /**
-     * @var string 角色id
+     * @var string 权限组名称
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $RoleId;
+    public $GroupName;
 
     /**
-     * @var string 角色名
+     * @var string 权限组key
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $RoleName;
+    public $GroupKey;
 
     /**
-     * @var integer 角色状态：1-启用；2-禁用
+     * @var integer 是否隐藏分组，0否1是
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $RoleStatus;
+    public $Hide;
 
     /**
-     * @var array 权限树
+     * @var array 权限集合
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $PermissionGroups;
+    public $Permissions;
 
     /**
-     * @param string $RoleId 角色id
+     * @param string $GroupName 权限组名称
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param string $RoleName 角色名
+     * @param string $GroupKey 权限组key
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param integer $RoleStatus 角色状态：1-启用；2-禁用
+     * @param integer $Hide 是否隐藏分组，0否1是
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param array $PermissionGroups 权限树
+     * @param array $Permissions 权限集合
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -86,24 +86,24 @@ class ChannelRole extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("RoleId",$param) and $param["RoleId"] !== null) {
-            $this->RoleId = $param["RoleId"];
+        if (array_key_exists("GroupName",$param) and $param["GroupName"] !== null) {
+            $this->GroupName = $param["GroupName"];
         }
 
-        if (array_key_exists("RoleName",$param) and $param["RoleName"] !== null) {
-            $this->RoleName = $param["RoleName"];
+        if (array_key_exists("GroupKey",$param) and $param["GroupKey"] !== null) {
+            $this->GroupKey = $param["GroupKey"];
         }
 
-        if (array_key_exists("RoleStatus",$param) and $param["RoleStatus"] !== null) {
-            $this->RoleStatus = $param["RoleStatus"];
+        if (array_key_exists("Hide",$param) and $param["Hide"] !== null) {
+            $this->Hide = $param["Hide"];
         }
 
-        if (array_key_exists("PermissionGroups",$param) and $param["PermissionGroups"] !== null) {
-            $this->PermissionGroups = [];
-            foreach ($param["PermissionGroups"] as $key => $value){
-                $obj = new PermissionGroup();
+        if (array_key_exists("Permissions",$param) and $param["Permissions"] !== null) {
+            $this->Permissions = [];
+            foreach ($param["Permissions"] as $key => $value){
+                $obj = new Permission();
                 $obj->deserialize($value);
-                array_push($this->PermissionGroups, $obj);
+                array_push($this->Permissions, $obj);
             }
         }
     }
