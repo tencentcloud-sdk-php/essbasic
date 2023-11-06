@@ -21,7 +21,11 @@ use TencentCloud\Common\AbstractModel;
  * ChannelBatchCancelFlows返回参数结构体
  *
  * @method array getFailMessages() 获取签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为"", 失败则对应失败原因
+
+注:  `如果全部撤销成功, 此数组为空数组`
  * @method void setFailMessages(array $FailMessages) 设置签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为"", 失败则对应失败原因
+
+注:  `如果全部撤销成功, 此数组为空数组`
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
@@ -29,6 +33,8 @@ class ChannelBatchCancelFlowsResponse extends AbstractModel
 {
     /**
      * @var array 签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为"", 失败则对应失败原因
+
+注:  `如果全部撤销成功, 此数组为空数组`
      */
     public $FailMessages;
 
@@ -39,6 +45,8 @@ class ChannelBatchCancelFlowsResponse extends AbstractModel
 
     /**
      * @param array $FailMessages 签署流程批量撤销失败原因，错误信息与流程Id一一对应，成功为"", 失败则对应失败原因
+
+注:  `如果全部撤销成功, 此数组为空数组`
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
