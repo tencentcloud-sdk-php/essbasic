@@ -18,25 +18,26 @@ namespace TencentCloud\Essbasic\V20210526\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * ChannelCreatePreparedPersonalEsign返回参数结构体
+ * DescribeBillUsageDetail返回参数结构体
  *
- * @method string getSealId() 获取电子印章ID，为32位字符串。
-建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
- * @method void setSealId(string $SealId) 设置电子印章ID，为32位字符串。
-建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+ * @method integer getTotal() 获取返回查询记录总数
+ * @method void setTotal(integer $Total) 设置返回查询记录总数
+ * @method array getDetails() 获取消耗记录详情
+ * @method void setDetails(array $Details) 设置消耗记录详情
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class ChannelCreatePreparedPersonalEsignResponse extends AbstractModel
+class DescribeBillUsageDetailResponse extends AbstractModel
 {
     /**
-     * @var string 电子印章ID，为32位字符串。
-建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+     * @var integer 返回查询记录总数
      */
-    public $SealId;
+    public $Total;
+
+    /**
+     * @var array 消耗记录详情
+     */
+    public $Details;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -44,9 +45,8 @@ class ChannelCreatePreparedPersonalEsignResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param string $SealId 电子印章ID，为32位字符串。
-建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
-可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
+     * @param integer $Total 返回查询记录总数
+     * @param array $Details 消耗记录详情
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -62,8 +62,17 @@ class ChannelCreatePreparedPersonalEsignResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("SealId",$param) and $param["SealId"] !== null) {
-            $this->SealId = $param["SealId"];
+        if (array_key_exists("Total",$param) and $param["Total"] !== null) {
+            $this->Total = $param["Total"];
+        }
+
+        if (array_key_exists("Details",$param) and $param["Details"] !== null) {
+            $this->Details = [];
+            foreach ($param["Details"] as $key => $value){
+                $obj = new BillUsageDetail();
+                $obj->deserialize($value);
+                array_push($this->Details, $obj);
+            }
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
