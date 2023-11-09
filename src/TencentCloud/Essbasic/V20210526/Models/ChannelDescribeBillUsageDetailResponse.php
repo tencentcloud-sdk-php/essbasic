@@ -18,19 +18,26 @@ namespace TencentCloud\Essbasic\V20210526\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * ChannelDescribeFlowComponents返回参数结构体
+ * ChannelDescribeBillUsageDetail返回参数结构体
  *
- * @method array getRecipientComponentInfos() 获取合同填写控件信息列表，填写控件会按照参与方角色进行分类。
- * @method void setRecipientComponentInfos(array $RecipientComponentInfos) 设置合同填写控件信息列表，填写控件会按照参与方角色进行分类。
+ * @method integer getTotal() 获取返回查询记录总数
+ * @method void setTotal(integer $Total) 设置返回查询记录总数
+ * @method array getDetails() 获取消耗记录详情
+ * @method void setDetails(array $Details) 设置消耗记录详情
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class ChannelDescribeFlowComponentsResponse extends AbstractModel
+class ChannelDescribeBillUsageDetailResponse extends AbstractModel
 {
     /**
-     * @var array 合同填写控件信息列表，填写控件会按照参与方角色进行分类。
+     * @var integer 返回查询记录总数
      */
-    public $RecipientComponentInfos;
+    public $Total;
+
+    /**
+     * @var array 消耗记录详情
+     */
+    public $Details;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -38,7 +45,8 @@ class ChannelDescribeFlowComponentsResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param array $RecipientComponentInfos 合同填写控件信息列表，填写控件会按照参与方角色进行分类。
+     * @param integer $Total 返回查询记录总数
+     * @param array $Details 消耗记录详情
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -54,12 +62,16 @@ class ChannelDescribeFlowComponentsResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("RecipientComponentInfos",$param) and $param["RecipientComponentInfos"] !== null) {
-            $this->RecipientComponentInfos = [];
-            foreach ($param["RecipientComponentInfos"] as $key => $value){
-                $obj = new RecipientComponentInfo();
+        if (array_key_exists("Total",$param) and $param["Total"] !== null) {
+            $this->Total = $param["Total"];
+        }
+
+        if (array_key_exists("Details",$param) and $param["Details"] !== null) {
+            $this->Details = [];
+            foreach ($param["Details"] as $key => $value){
+                $obj = new ChannelBillUsageDetail();
                 $obj->deserialize($value);
-                array_push($this->RecipientComponentInfos, $obj);
+                array_push($this->Details, $obj);
             }
         }
 
